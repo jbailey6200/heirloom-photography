@@ -292,3 +292,31 @@ body {
 .toast-error {
   @apply bg-red-600 text-white;
 }
+
+/* Hide scrollbar for horizontal scroll areas */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Smooth momentum scrolling on iOS */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for snap-align-none (not a default Tailwind class) */
+@media (min-width: 768px) {
+  .md\:snap-align-none {
+    scroll-snap-align: unset;
+  }
+}
+
+
+
+
+
+

@@ -4,7 +4,7 @@ import SEO from '../components/SEO';
 const WEDDING_PACKAGES = [
   {
     title: 'Full Wedding Day',
-    price: '$1,500',
+    price: '$3,000',
     popular: true,
     features: [
       'Up to 10 Hours of coverage',
@@ -18,7 +18,7 @@ const WEDDING_PACKAGES = [
   },
   {
     title: 'Half Wedding Day',
-    price: '$1,000',
+    price: '$1,800',
     features: [
       'Up to 5 Hours of coverage',
       'Ceremony & Reception',
@@ -44,7 +44,7 @@ const WEDDING_PACKAGES = [
 const PORTRAIT_PACKAGES = [
   {
     title: 'Family Session',
-    price: '$200',
+    price: '$350',
     features: [
       '1.5 Hours of coverage',
       '25+ Edited Images',
@@ -54,7 +54,7 @@ const PORTRAIT_PACKAGES = [
   },
   {
     title: 'Couples/Engagement',
-    price: '$150',
+    price: '$300',
     features: [
       '1 Hour of coverage',
       '20+ Edited Images',
@@ -64,7 +64,7 @@ const PORTRAIT_PACKAGES = [
   },
   {
     title: 'Maternity',
-    price: '$200',
+    price: '$350',
     features: [
       '1.5 Hours of coverage',
       '25+ Edited Images',
@@ -74,7 +74,7 @@ const PORTRAIT_PACKAGES = [
   },
   {
     title: 'Newborn',
-    price: '$200',
+    price: '$350',
     features: [
       '2 Hours of coverage',
       '25+ Edited Images',
