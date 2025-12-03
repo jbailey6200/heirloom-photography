@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   HEIRLOOM & CO. PHOTOGRAPHY - CUSTOM STYLES
+   Elegant, Timeless, Refined
+   ===================================================== */
+
+/* Base Reset & Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Classes */
+.font-serif {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-script {
+  font-family: 'Pinyon Script', cursive;
+}
+
+.font-sans {
+  font-family: 'Lato', sans-serif;
+}
+
+/* Elegant Link Underline Animation */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Image Hover Effects */
+.img-hover-zoom {
+  overflow: hidden;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.6s ease;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Fade In Animation Classes */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger Animation Delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Elegant Button Styles */
+.btn-primary {
+  @apply px-8 py-3 bg-stone-800 text-white text-sm tracking-widest uppercase;
+  @apply hover:bg-stone-700 transition-all duration-300;
+  @apply font-sans font-light;
+}
+
+.btn-secondary {
+  @apply px-8 py-3 border border-stone-800 text-stone-800 text-sm tracking-widest uppercase;
+  @apply hover:bg-stone-800 hover:text-white transition-all duration-300;
+  @apply font-sans font-light;
+}
+
+/* Form Input Styles */
+.input-elegant {
+  @apply w-full px-4 py-3 border border-stone-200 bg-white;
+  @apply focus:outline-none focus:border-stone-400 focus:ring-0;
+  @apply font-sans text-stone-700 placeholder-stone-400;
+  @apply transition-colors duration-200;
+}
+
+.input-elegant:focus {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Gallery Grid Masonry-like Effect */
+.gallery-grid {
+  column-count: 1;
+  column-gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-grid {
+    column-count: 3;
+  }
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+/* Lightbox Overlay */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf9f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b8178;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b6158;
+}
+
+/* Hero Section Text Shadow for Readability */
+.hero-text-shadow {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Decorative Divider */
+.divider-ornate {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.divider-ornate::before,
+.divider-ornate::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d6d3d1, transparent);
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e7e5e4;
+  border-top-color: #78716c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile Menu Animation */
+.mobile-menu-enter {
+  animation: slideDown 0.3s ease forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image Placeholder/Loading State */
+.img-loading {
+  background: linear-gradient(90deg, #f5f5f4 25%, #e7e5e4 50%, #f5f5f4 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Testimonial Quote Style */
+.quote-mark {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 4rem;
+  line-height: 1;
+  color: #d6d3d1;
+}
+
+/* Admin Panel Specific Styles */
+.admin-sidebar {
+  @apply fixed left-0 top-0 h-full w-64 bg-stone-900 text-white;
+}
+
+.admin-content {
+  @apply ml-64 min-h-screen bg-stone-50;
+}
+
+/* Drag and Drop Zone */
+.dropzone {
+  @apply border-2 border-dashed border-stone-300 rounded-lg p-8;
+  @apply bg-stone-50 text-center cursor-pointer;
+  @apply transition-all duration-200;
+}
+
+.dropzone:hover,
+.dropzone.active {
+  @apply border-stone-500 bg-stone-100;
+}
+
+/* Photo Grid in Admin */
+.photo-grid-admin {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Toast Notification */
+.toast {
+  @apply fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg;
+  @apply transform transition-all duration-300;
+  z-index: 1000;
+}
+
+.toast-success {
+  @apply bg-green-600 text-white;
+}
+
+.toast-error {
+  @apply bg-red-600 text-white;
+}
