@@ -2,15 +2,15 @@ import { useState } from 'react';
 import SEO from '../components/SEO';
 
 // =====================================================
-// FORMSPREE SETUP
+// WEB3FORMS SETUP (Free & No Email Verification Required)
 // =====================================================
-// 1. Go to https://formspree.io and create a free account
-// 2. Create a new form
-// 3. Replace 'YOUR_FORMSPREE_ID' below with your form ID
-//    (it looks like 'xabc1234')
+// 1. Go to https://web3forms.com
+// 2. Enter Marie's email: heirloomandcophotos@gmail.com
+// 3. Click "Create Access Key" - they'll email the key
+// 4. Replace the access_key below with the one from email
 // =====================================================
 
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID'; // Replace with your Formspree form ID
+const WEB3FORMS_ACCESS_KEY = 'e0b06e84-c8ae-4b82-b9fa-7420b6c9e2e8'; // Replace with key from web3forms.com
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -30,15 +30,36 @@ export default function Contact() {
     setStatus('submitting');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/heirloomandcophotos@gmail.com', {
+      // Prepare form data for Web3Forms
+      const submitData = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `New Inquiry from ${formData.name} - ${formData.sessionType}`,
+        from_name: 'Heirloom & Co. Website',
+        // Form fields
+        Name: formData.name,
+        Email: formData.email,
+        Phone: formData.phone || 'Not provided',
+        'Session Type': formData.sessionType,
+        'Preferred Date': formData.date || 'Not specified',
+        'Location/Venue': formData.location || 'Not specified',
+        Message: formData.message,
+        'How They Found You': formData.howFound || 'Not specified',
+        // Reply-to so Marie can reply directly
+        replyto: formData.email,
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submitData),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         setStatus('success');
         setFormData({
           name: '',
@@ -51,6 +72,7 @@ export default function Contact() {
           howFound: ''
         });
       } else {
+        console.error('Form submission failed:', result);
         setStatus('error');
       }
     } catch (error) {
@@ -254,7 +276,10 @@ export default function Contact() {
 
                 {status === 'error' && (
                   <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm font-sans">
-                    Something went wrong. Please try again or email directly.
+                    Something went wrong. Please try again or email me directly at{' '}
+                    <a href="mailto:heirloomandcophotos@gmail.com" className="underline">
+                      heirloomandcophotos@gmail.com
+                    </a>
                   </div>
                 )}
 

@@ -67,13 +67,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Photo Strip */}
-        <section className="py-4 overflow-hidden bg-white">
-          <div className="flex gap-4 px-4">
+        {/* Photo Strip - Horizontally scrollable on mobile */}
+        <section className="py-4 bg-white">
+          {/* Mobile: horizontal scroll, Desktop: equal columns */}
+          <div className="
+            flex gap-4 px-4
+            overflow-x-auto md:overflow-x-visible
+            snap-x snap-mandatory md:snap-none
+            scrollbar-hide
+            -mx-4 px-4 md:mx-0 md:px-4
+          ">
             {heroPhotos.map((photo, idx) => (
               <div 
                 key={idx} 
-                className="flex-1 min-w-[200px] md:min-w-0 aspect-[4/5] overflow-hidden img-hover-zoom"
+                className="
+                  flex-shrink-0 md:flex-shrink md:flex-1
+                  w-[75vw] sm:w-[50vw] md:w-auto
+                  aspect-[4/5] 
+                  overflow-hidden 
+                  img-hover-zoom
+                  snap-center md:snap-align-none
+                "
               >
                 <img 
                   src={photo} 
@@ -83,6 +97,16 @@ export default function Home() {
                 />
               </div>
             ))}
+          </div>
+          
+          {/* Scroll indicator for mobile */}
+          <div className="flex justify-center mt-3 md:hidden">
+            <p className="text-xs text-stone-400 font-sans flex items-center">
+              <svg className="w-4 h-4 mr-1 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+              Swipe to see more
+            </p>
           </div>
         </section>
 
