@@ -10,7 +10,7 @@ export default function SEO({
 }) {
   const siteName = 'Heirloom & Co. Photography';
   const defaultDescription = 'Wedding and lifestyle photographer serving Cullman, Huntsville, Decatur, and North Alabama. Creating heirlooms your family will treasure for generations.';
-  const defaultImage = 'https://heirloomandcophotography.vercel.app/og-image.jpg';
+  const defaultImage = 'https://heirloomandcophotography.vercel.app/og-image.png';
   const baseUrl = 'https://heirloomandcophotography.vercel.app/';
   
   const pageTitle = title 
