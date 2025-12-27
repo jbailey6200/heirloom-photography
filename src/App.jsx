@@ -16,6 +16,7 @@ import AdminGalleryCreate from './admin/AdminGalleryCreate';
 import AdminGalleryEdit from './admin/AdminGalleryEdit';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminLayout from './admin/AdminLayout';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
